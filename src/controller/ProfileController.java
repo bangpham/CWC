@@ -27,6 +27,10 @@ public class ProfileController extends AnchorPane implements Initializable{
     @FXML
     private TextField user;
     @FXML
+    private TextField password;
+    @FXML
+    private TextField passwordConfirm;
+    @FXML
     private TextField fname;
     @FXML
     private TextField lname;

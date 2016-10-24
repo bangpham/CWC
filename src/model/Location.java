@@ -45,24 +45,43 @@ public class Location implements Serializable {
         LOGGER.exiting("Location", "Constructor");
     }
 
+    /**
+     * Getter of longitude.
+     * @return longitude
+     */
     public double getLongitude() { return longitude; }
 
-
+    /**
+     * Setter of longitude.
+     */
     public void setLongitude(double lg) {
          longitude= lg;
     }
 
+    /**
+     * Getter of latitude.
+     * @return latitude of location
+     */
     public double getLatitude() {return latitude; }
 
+    /**
+     * Setter of longitude.
+     */
     public void setLatitude(double lat) {
         latitude = lat;
     }
 
-
+    /**
+     * Getter of description
+     * @return description of location
+     */
     public String getDescription() {return description;}
     public String getTitle() { return title; }
 
-
+    /**
+     * Save logger to text.
+     * @param pw
+     */
     public void saveToText(PrintWriter pw) {
         LOGGER.setLevel(Level.FINEST);
         LOGGER.entering("Location", "saveToText");
@@ -70,6 +89,12 @@ public class Location implements Serializable {
         LOGGER.exiting("Location", "saveToText");
     }
 
+    /**
+     * Return location from text file.
+     * @param str
+     * @return the location.
+     * @throws FileFormatException
+     */
     public static Location makeFromFileString(String str) throws FileFormatException {
         String[] tokens = str.split("\t");
 

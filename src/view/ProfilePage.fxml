@@ -15,83 +15,122 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" stylesheets="@../fxapp/stylesheet.css" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ProfileController">
    <children>
-      <Label alignment="CENTER" layoutX="322.0" layoutY="56.0" prefHeight="26.0" prefWidth="145.0" text="Account Profile">
-         <font>
-            <Font size="16.0" />
-         </font></Label>
-      <VBox layoutX="79.0" layoutY="88.0" maxHeight="637.0" prefHeight="333.0" prefWidth="637.0">
+      <VBox layoutX="79.0" layoutY="88.0" maxHeight="637.0" prefHeight="414.0" prefWidth="654.0" spacing="10.0">
          <children>
-            <GridPane prefHeight="331.0" prefWidth="656.0">
+            <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="20.0" prefWidth="654.0" text="Account Profile">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+            <GridPane prefHeight="278.0" prefWidth="600.0">
               <columnConstraints>
-                <ColumnConstraints hgrow="SOMETIMES" maxWidth="394.0" minWidth="10.0" prefWidth="109.70439147949219" />
-                <ColumnConstraints hgrow="SOMETIMES" maxWidth="724.0" minWidth="10.0" prefWidth="568.2956085205078" />
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="394.0" minWidth="10.0" prefWidth="99.11534118652344" />
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="514.8846588134766" minWidth="10.0" prefWidth="514.8846588134766" />
               </columnConstraints>
               <rowConstraints>
                   <RowConstraints maxHeight="56.0" minHeight="10.0" prefHeight="42.05829620361328" vgrow="SOMETIMES" />
                 <RowConstraints maxHeight="59.587799072265625" minHeight="10.0" prefHeight="43.94170379638672" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="126.0" minHeight="10.0" prefHeight="40.412200927734375" vgrow="SOMETIMES" />
                 <RowConstraints maxHeight="126.0" minHeight="10.0" prefHeight="40.412200927734375" vgrow="SOMETIMES" />
                   <RowConstraints maxHeight="126.0" minHeight="10.0" prefHeight="44.0" vgrow="SOMETIMES" />
-                <RowConstraints maxHeight="121.0" minHeight="10.0" prefHeight="44.0" vgrow="SOMETIMES" />
-                  <RowConstraints maxHeight="100.0" minHeight="10.0" prefHeight="44.82373046875" vgrow="SOMETIMES" />
                   <RowConstraints maxHeight="70.0" minHeight="10.0" prefHeight="68.17626953125" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
                   <Label layoutX="10.0" layoutY="64.0" text="Account Type:" />
-                  <TextField fx:id="accountType" disable="true" layoutX="120.0" layoutY="59.0" prefHeight="27.0" prefWidth="434.0" GridPane.columnIndex="1">
+                  <TextField fx:id="accountType" disable="true" layoutX="120.0" layoutY="59.0" maxWidth="485.0" minWidth="485.0" prefHeight="27.0" GridPane.columnIndex="1">
                      <GridPane.margin>
                         <Insets left="10.0" right="10.0" />
                      </GridPane.margin>
                   </TextField>
                   <Label text="Username:" GridPane.rowIndex="1" />
-                  <TextField fx:id="user" disable="true" prefHeight="27.0" prefWidth="434.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                  <TextField fx:id="user" disable="true" maxWidth="485.0" minWidth="485.0" prefHeight="27.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
                      <GridPane.margin>
                         <Insets left="10.0" right="10.0" />
                      </GridPane.margin>
                   </TextField>
-                  <Label layoutX="10.0" layoutY="140.0" text="First name:" GridPane.rowIndex="2" />
-                  <TextField fx:id="fname" layoutX="120.0" layoutY="23.0" prefHeight="27.0" prefWidth="434.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
-                     <GridPane.margin>
-                        <Insets left="10.0" right="10.0" />
-                     </GridPane.margin>
-                  </TextField>
-                  <TextField fx:id="lname" prefHeight="27.0" prefWidth="593.0" GridPane.columnIndex="1" GridPane.rowIndex="3">
-                     <GridPane.margin>
-                        <Insets left="10.0" right="10.0" />
-                     </GridPane.margin>
-                  </TextField>
-                  <Label layoutX="10.0" layoutY="35.0" text="Email:" GridPane.rowIndex="4" />
-                  <TextField fx:id="email" layoutX="120.0" layoutY="75.0" prefHeight="27.0" prefWidth="434.0" GridPane.columnIndex="1" GridPane.rowIndex="4">
-                     <GridPane.margin>
-                        <Insets left="10.0" right="10.0" />
-                     </GridPane.margin>
-                  </TextField>
-                  <Label layoutX="10.0" layoutY="102.0" text="Phone:" GridPane.rowIndex="5" />
-                  <TextField fx:id="phone" layoutX="120.0" layoutY="127.0" prefHeight="27.0" prefWidth="434.0" GridPane.columnIndex="1" GridPane.rowIndex="5">
-                     <GridPane.margin>
-                        <Insets left="10.0" right="10.0" />
-                     </GridPane.margin>
-                  </TextField>
-                  <Label layoutX="10.0" layoutY="168.0" text="Address:" GridPane.rowIndex="6" />
-                  <TextArea fx:id="address" prefHeight="33.0" prefWidth="630.0" GridPane.columnIndex="1" GridPane.rowIndex="6">
-                     <GridPane.margin>
-                        <Insets left="10.0" right="10.0" top="10.0" />
-                     </GridPane.margin>
-                  </TextArea>
-                  <Label text="Last name:" GridPane.rowIndex="3" />
+                  <Label layoutX="10.0" layoutY="140.0" text="First name:" GridPane.rowIndex="3" />
+                  <Label layoutX="10.0" layoutY="35.0" text="Email address:" GridPane.rowIndex="4" />
+                  <Label layoutX="10.0" layoutY="168.0" text="Address:" GridPane.rowIndex="5" />
+                  <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                     <children>
+                        <TextField fx:id="fname" prefHeight="27.0" prefWidth="170.0">
+                           <HBox.margin>
+                              <Insets left="10.0" />
+                           </HBox.margin>
+                        </TextField>
+                        <Label prefHeight="17.0" prefWidth="125.0" text="Last name:">
+                           <HBox.margin>
+                              <Insets left="20.0" />
+                           </HBox.margin>
+                        </Label>
+                        <TextField fx:id="lname" prefHeight="27.0" prefWidth="170.0">
+                           <HBox.margin>
+                              <Insets />
+                           </HBox.margin>
+                        </TextField>
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                     <children>
+                        <TextField fx:id="password" prefHeight="27.0" prefWidth="170.0" promptText="Type new password">
+                           <HBox.margin>
+                              <Insets left="10.0" />
+                           </HBox.margin>
+                        </TextField>
+                        <Label prefHeight="17.0" prefWidth="125.0" text="Confirm password:">
+                           <HBox.margin>
+                              <Insets left="20.0" />
+                           </HBox.margin>
+                        </Label>
+                        <TextField fx:id="passwordConfirm" prefHeight="27.0" prefWidth="170.0" promptText=" Confirm new password">
+                           <HBox.margin>
+                              <Insets />
+                           </HBox.margin>
+                        </TextField>
+                     </children>
+                  </HBox>
+                  <Label text="New password:" GridPane.rowIndex="2" />
+                  <HBox alignment="CENTER_LEFT" prefHeight="100.0" GridPane.columnIndex="1" GridPane.rowIndex="4">
+                     <children>
+                        <TextField fx:id="email" prefHeight="27.0" prefWidth="170.0">
+                           <HBox.margin>
+                              <Insets left="10.0" />
+                           </HBox.margin>
+                        </TextField>
+                        <Label prefWidth="125.0" text="Phone number:">
+                           <HBox.margin>
+                              <Insets left="20.0" />
+                           </HBox.margin>
+                        </Label>
+                        <TextField fx:id="phone" prefHeight="27.0" prefWidth="170.0" />
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" spacing="10.0" GridPane.columnIndex="1" GridPane.rowIndex="5">
+                     <children>
+                        <TextArea fx:id="address" maxHeight="50.0" minWidth="485.0" prefHeight="50.0" prefWidth="485.0">
+                           <HBox.margin>
+                              <Insets left="10.0" />
+                           </HBox.margin>
+                        </TextArea>
+                     </children>
+                  </HBox>
                </children>
             </GridPane>
+            <HBox alignment="TOP_CENTER" prefHeight="28.0" prefWidth="660.0" spacing="10.0">
+               <children>
+                  <Button fx:id="backToReg" mnemonicParsing="false" onAction="#backToRegPressed" prefHeight="26.0" prefWidth="90.0" text="Back" />
+                  <Button mnemonicParsing="false" onAction="#savePressed" prefHeight="26.0" prefWidth="90.0" text="Save" />
+               </children>
+            </HBox>
+            <Label fx:id="message" alignment="CENTER" contentDisplay="CENTER" prefHeight="18.0" prefWidth="662.0" text="Profile updated" textFill="#d32020" visible="false">
+               <font>
+                  <Font size="14.0" fx:id="x2" />
+               </font>
+            </Label>
          </children>
+         <padding>
+            <Insets left="20.0" right="20.0" />
+         </padding>
       </VBox>
-      <HBox alignment="TOP_CENTER" layoutY="457.0" prefHeight="143.0" prefWidth="802.0" spacing="10.0">
-         <children>
-            <Button fx:id="backToReg" mnemonicParsing="false" onAction="#backToRegPressed" prefHeight="26.0" prefWidth="90.0" text="Back" />
-            <Button mnemonicParsing="false" onAction="#savePressed" prefHeight="26.0" prefWidth="90.0" text="Save" />
-         </children>
-      </HBox>
-      <Label fx:id="message" alignment="CENTER" contentDisplay="CENTER" layoutX="202.0" layoutY="421.0" prefHeight="20.0" prefWidth="397.0" text="Profile updated" textFill="#d32020" visible="false">
-         <font>
-            <Font size="14.0" fx:id="x2" />
-         </font>
-      </Label>
    </children>
 </AnchorPane>

@@ -174,6 +174,7 @@ public class Account {
 
 
     /**
+     * a method to set phone number of the account
      * @param phone the phone to set
      */
     public void setPhone(String phone) {
@@ -182,6 +183,7 @@ public class Account {
 
 
     /**
+     * a method to set address of the account
      * @param address the address to set
      */
     public void setAddress(String address) {

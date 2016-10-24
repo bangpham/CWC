@@ -54,12 +54,6 @@ public class UserAppController implements Initializable, MapComponentInitialized
     private AnchorPane reportForm;
 
     @FXML
-    private TextField virusPPM;
-
-    @FXML
-    private TextField contaminantPPM;
-
-    @FXML
     private TextField longitude;
 
     @FXML
@@ -162,7 +156,10 @@ public class UserAppController implements Initializable, MapComponentInitialized
 
     }
 
-
+    /**
+     * Helper method to display pin on map.
+     * If a pin is clicked, an info window with location information will pop up.
+     */
     private void displayPins() {
         for (WaterSourceReport w: dataArrayList) {
             MarkerOptions markerOptions = new MarkerOptions();
@@ -194,6 +191,11 @@ public class UserAppController implements Initializable, MapComponentInitialized
         }
     }
 
+    /**
+     * Helper method to display pin on Map.
+     * When user select an item in report list, it will display on map.
+     * @param report report to be pinned on
+     */
     private void displayPinFromList(WaterSourceReport report) {
         MarkerOptions markerOption = new MarkerOptions();
         LatLong location = new LatLong(report.getLatitude(), report.getLongitude());
@@ -218,12 +220,19 @@ public class UserAppController implements Initializable, MapComponentInitialized
         map.addMarker(marker);
     }
 
+    /**
+     * Helper method to auto focus on last added item on report list.
+     */
     private void focusItem() {
         int index = waterReportList.size() - 1;
         reportListView.scrollTo(index);
         reportListView.getFocusModel().focus(index);
         reportListView.getSelectionModel().select(index);
     }
+
+    /**
+     * Helper method to added report from database to report List.
+     */
     private void pullReport() {
         waterReportList = FXCollections.observableArrayList();
         dataArrayList = Database.getWaterSourceReports();
@@ -243,7 +252,7 @@ public class UserAppController implements Initializable, MapComponentInitialized
     }
 
     /**
-     * Activates the username is pressed
+     * Go to user's profile page.
      */
     @FXML
     private void usernamePressed() {
@@ -262,15 +271,19 @@ public class UserAppController implements Initializable, MapComponentInitialized
         }
     }
 
+    /**
+     * Reset form. Removed any filled text area.
+     */
     private void resetForm() {
-        //reportType.setValue("Report Type");
         waterCondition.setValue(null);
-        //contaminantPPM.clear();
-        //virusPPM.clear();
         longitude.clear();
         latitude.clear();
     }
 
+    /**
+     * Submit a source report form.
+     * Submit report to database.
+     */
     @FXML
     private void submitFormPressed() {
 
@@ -302,22 +315,33 @@ public class UserAppController implements Initializable, MapComponentInitialized
         }
     }
 
+    /**
+     * toggle menu when pressed.
+     */
     @FXML
     private void menuPressed(){
         toggleMenu();
     }
 
+    /**
+     * Go to user's profile page when settings is pressed
+     */
     @FXML
     private void accountSettingPressed() {
         application.gotoProfile();
     }
 
+    /**
+     * Log current user out of application when pressed.
+     */
     @FXML
     private void signoutPressed() {
         application.accountLogout();
     }
 
-
+    /**
+     * Expand and Collapse menu when clicked.
+     */
     private void toggleMenu() {
         if (!reportExpand) {
             mapView.setMinWidth(800);
@@ -335,6 +359,9 @@ public class UserAppController implements Initializable, MapComponentInitialized
         }
     }
 
+    /**
+     * Disable options between source and purity report when one of both is clicked.
+     */
     @FXML
     private void reportTypeSelected() {
         if (reportType.getValue().equals("Source report")) {
@@ -342,16 +369,18 @@ public class UserAppController implements Initializable, MapComponentInitialized
         } else if (reportType.getValue().equals("Purity report")) {
             isSourceReport = false;
         }
-        virusPPM.setDisable(isSourceReport);
-        contaminantPPM.setDisable(isSourceReport);
         waterType.setDisable(!isSourceReport);
     }
-
+    /**
+     * Collapse other expandable when this tap is pressed.
+     */
     @FXML
     private void newReportPressed() {
         reportCollapse.setExpanded(false);
     }
-
+    /**
+     * Collapse other expandable when this tap is pressed.
+     */
     @FXML
     private void viewReportPressed() {
         formCollapse.setExpanded(false);

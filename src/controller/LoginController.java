@@ -69,6 +69,11 @@ public class LoginController extends AnchorPane implements Initializable {
         return confirmLogin;
     }
 
+
+    /**
+     * Activate OKpressed() method when enter key is pressed.
+     * @param event OK pressed.
+     */
     @FXML
     public void enterPressed(KeyEvent event) {
         if (event.getCode() == KeyCode.ENTER) {
@@ -77,7 +82,8 @@ public class LoginController extends AnchorPane implements Initializable {
     }
 
     /**
-     * Becomes active when ok is pressed in the login page.
+     * Log in user and pull user from database.
+     * if user cannot log in, error message will be displayed.
      */
     @FXML
     private void OKPressed() {

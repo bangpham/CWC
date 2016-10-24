@@ -82,32 +82,51 @@ public class ReportViewController implements Initializable {
     }
 
     /**
-     * Back to
+     * Setter of report numner
      */
     public void setReportNumber(int number) {
         reportNumber.setText("" + number);
     }
 
+    /**
+     * Setter of reporter.
+     */
     public void setReporter(String name) {
         reporter.setText(name);
     }
 
+    /**
+     * Setter of date created.
+     */
     public void setDateCreated(Timestamp date) {
         dateCreated.setText("" + date);
     }
 
+    /**
+     * Setter of report longitude location.
+     */
     public void setLongitude(double longi) {
         longitude.setText("" + longi);
     }
 
+
+    /**
+     * Setter of latitude location.
+     */
     public void setLatitude(double lati) {
         latitude.setText("" + lati);
     }
 
+    /**
+     * Setter of water type in report.
+     */
     public void setWaterType(WaterType type) {
         waterType.setText("" + type);
     }
 
+    /**
+     * Setter of report water condition in report.
+     */
     public void setWaterCondition(WaterCondition condition) {
         waterCondition.setText("" + condition);
     }
@@ -116,6 +135,9 @@ public class ReportViewController implements Initializable {
     private void menuPressed(){
     }
 
+    /**
+     * Go to application when pressed.
+     */
     @FXML
     private void backToAppPressed() {
         application.gotoApp();

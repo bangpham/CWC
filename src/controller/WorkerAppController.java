@@ -24,7 +24,7 @@ import java.util.*;
  * Created by Sheng on 9/19/16.
  * A controller for the app view
  */
-public class WorkerAppController implements Initializable, MapComponentInitializedListener  {
+public class WorkerAppController extends UserAppController implements Initializable, MapComponentInitializedListener  {
     @FXML
     private GoogleMapView mapView;
 
@@ -91,8 +91,6 @@ public class WorkerAppController implements Initializable, MapComponentInitializ
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-
-
         mapView.addMapInializedListener(this);
 
         Locale.setDefault(Locale.US);
@@ -139,14 +137,12 @@ public class WorkerAppController implements Initializable, MapComponentInitializ
 
         map = mapView.createMap(options);
         displayPins();
-
-        /** now we communciate with the model to get all the locations for markers */
-//        Facade fc = Facade.getInstance();
-//        List<WaterSourceReport> locations = fc.getLocations();
-
     }
 
-
+    /**
+     * Helper method to display pin on map.
+     * If a pin is clicked, an info window with location information will pop up.
+     */
     private void displayPins() {
         for (WaterSourceReport w: dataArrayList) {
             MarkerOptions markerOptions = new MarkerOptions();
@@ -180,6 +176,11 @@ public class WorkerAppController implements Initializable, MapComponentInitializ
         }
     }
 
+    /**
+     * Helper method to display pin on Map.
+     * When user select an item in report list, it will display on map.
+     * @param report report to be pinned on
+     */
     private void displayPinFromList(WaterSourceReport report) {
         MarkerOptions markerOption = new MarkerOptions();
         LatLong location = new LatLong(report.getLatitude(), report.getLongitude());
@@ -204,12 +205,19 @@ public class WorkerAppController implements Initializable, MapComponentInitializ
         map.addMarker(marker);
     }
 
+    /**
+     * Helper method to auto focus on last added item on report list.
+     */
     private void focusItem() {
         int index = waterReportList.size() - 1;
         reportListView.scrollTo(index);
         reportListView.getFocusModel().focus(index);
         reportListView.getSelectionModel().select(index);
     }
+
+    /**
+     * Helper method to added report from database to report List.
+     */
     private void pullReport() {
         waterReportList = FXCollections.observableArrayList();
         dataArrayList = Database.getWaterSourceReports();
@@ -236,18 +244,9 @@ public class WorkerAppController implements Initializable, MapComponentInitializ
         application.gotoProfile();
     };
 
-    @FXML
-    private void cancelFormPressed() {
-        alert.setTitle("Form Cancellation");
-        alert.setHeaderText("Are you sure to cancel the current report?");
-        alert.setContentText("Hit OK to void your submission");
-        Optional<ButtonType> result = alert.showAndWait();
-
-        if (result.get() == ButtonType.OK){
-            resetForm();
-        }
-    }
-
+    /**
+     * Helper method to reset form when cancel  is clicked.
+     */
     private void resetForm() {
         reportType.setValue("Report Type");
         waterCondition.setValue(null);
@@ -257,6 +256,10 @@ public class WorkerAppController implements Initializable, MapComponentInitializ
         latitude.clear();
     }
 
+    /**
+     * Helper method to submit a source report form.
+     * Submit report to database.
+     */
     @FXML
     private void submitFormPressed() {
 
@@ -288,58 +291,4 @@ public class WorkerAppController implements Initializable, MapComponentInitializ
         }
     }
 
-    @FXML
-    private void menuPressed(){
-        toggleMenu();
-    }
-
-    @FXML
-    private void accountSettingPressed() {
-        application.gotoProfile();
-    }
-
-    @FXML
-    private void signoutPressed() {
-        application.accountLogout();
-    }
-
-
-    private void toggleMenu() {
-        if (!reportExpand) {
-            mapView.setMinWidth(800);
-            mapView.setMaxWidth(800);
-            reportForm.setMinWidth(0);
-            reportForm.setMaxWidth(0);
-            reportExpand = true;
-        }
-        else {
-            mapView.setMinWidth(600);
-            mapView.setMaxWidth(600);
-            reportForm.setMinWidth(200);
-            reportForm.setMaxWidth(200);
-            reportExpand = false;
-        }
-    }
-
-    @FXML
-    private void reportTypeSelected() {
-        if (reportType.getValue().equals("Source report")) {
-            isSourceReport = true;
-        } else if (reportType.getValue().equals("Purity report")) {
-            isSourceReport = false;
-        }
-        virusPPM.setDisable(isSourceReport);
-        contaminantPPM.setDisable(isSourceReport);
-        waterType.setDisable(!isSourceReport);
-    }
-
-    @FXML
-    private void newReportPressed() {
-        reportCollapse.setExpanded(false);
-    }
-
-    @FXML
-    private void viewReportPressed() {
-        formCollapse.setExpanded(false);
-    }
 }

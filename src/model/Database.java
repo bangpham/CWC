@@ -22,12 +22,24 @@ public class Database {
     private static Database database;
 
 
-
+    /**
+     * Gettter of database.
+     * @return
+     */
     public static Database getDatabase() {
         return database;
     }
 
 
+    /**
+     * Update information of an account to database.
+     * @param fname first name of user.
+     * @param lname last name of user.
+     * @param email email address of user.
+     * @param phone phone number of user.
+     * @param address address of user.
+     * @param username username of user.
+     */
     public static void updateAccount(String fname,
                                      String lname,
                                      String email,
@@ -61,6 +73,11 @@ public class Database {
         }
     }
 
+    /**
+     * Obtain user Account from database
+     * @param username of user Account
+     * @return account of that username.
+     */
     public static Account getAccount(String username) {
         Account account = null;
 
@@ -91,6 +108,12 @@ public class Database {
         return account;
     }
 
+    /**
+     * Check if user name matches password in database.
+     * @param username to log in
+     * @param password of that user.
+     * @return if user name matches password in database
+     */
     public static boolean login(String username, String password) {
 
         try {
@@ -112,7 +135,11 @@ public class Database {
         return false;
     }
 
-
+    /**
+     * Validate if username is available to register.
+     * @param username to validate
+     * @return if username is available.
+     */
     public static boolean validateUsername(String username) {
 
         try {
@@ -143,7 +170,15 @@ public class Database {
         return false;
     }
 
-
+    /**
+     * Added a user to user table in data base
+     * @param username of user
+     * @param password of user
+     * @param fname first name.
+     * @param lname last name.
+     * @param email email address.
+     * @param type type of user.
+     */
     public static void addUser(String username, String password, String fname
             , String lname, String email, AccountType type) {
 
@@ -178,6 +213,15 @@ public class Database {
         }
     }
 
+    /**
+     * Added water source report to database.
+     * @param username user who submit the report.
+     * @param latitude of location report
+     * @param longitude of location report
+     * @param waterType type of water
+     * @param waterCondition condition of water
+     * @param date date of report
+     */
     public static void addWaterSourceReport(String username , String latitude
             , String longitude, WaterType waterType, WaterCondition waterCondition, String date) {
 
@@ -213,7 +257,10 @@ public class Database {
         }
     }
 
-
+    /**
+     * Retreive water source report from database.
+     * @return list of water source report
+     */
     public static List<WaterSourceReport> getWaterSourceReports() {
         String query = "SELECT * FROM WaterSourceReport";
         reportList = new ArrayList<>();
@@ -247,8 +294,10 @@ public class Database {
     }
 
 
-
-
+    /**
+     * Connect to database.
+     * @return null
+     */
     public static Database connectToDatabase(){
 
         //load jdbc driver for mysql database
